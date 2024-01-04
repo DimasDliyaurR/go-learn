@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // Declaration function parameters
 type Blacklist func(string) bool
 
@@ -17,7 +19,7 @@ type Blacklist func(string) bool
 // 	return "hallo " + filterName
 // }
 
-// func filter(name string) string {
+// func filterSpam(name string) string {
 // 	if name == "Anjing" {
 // 		name := "..."
 // 		return name
@@ -45,6 +47,35 @@ type Blacklist func(string) bool
 // 	}
 // }
 
+// Recursive function
+
+// func recursiveFactorial(value int) int {
+// 	if value == 1 {
+// 		return 1
+// 	} else {
+// 		return value * recursiveFactorial(value-1)
+// 	}
+// }
+
+// Defer , Panic , And Recover
+
+func logging() {
+	massage := recover()
+	if massage != nil {
+		fmt.Println("Error massage dengan", massage)
+	}
+	fmt.Println("aplikasi login")
+}
+
+func runApp(error bool) {
+	defer logging()
+	if error {
+		panic("Aplikasi Error")
+	}
+
+	fmt.Println("Aplikasi berhasil")
+}
+
 func main() {
 	// ========================= Output Multiple values "_" untuk tidak memakai return ======================
 
@@ -55,7 +86,7 @@ func main() {
 
 	// ========================= Output Function as parameter =========================
 
-	// fmt.Println(sayHello("Anjing", filter))
+	// fmt.Println(sayHello("Anjing", filterSpam))
 
 	// =========================== Ouput Function return named ============================
 
@@ -76,4 +107,13 @@ func main() {
 	// 	return name == "admin" || name == "root"
 	// })
 	// registrationUser("dimas", blacklist)
+
+	// Output Recursive Function
+
+	// recursive := recursiveFactorial(10)
+	// fmt.Println(recursive)
+
+	// Output defer ,panic and recovery
+
+	runApp(true)
 }
